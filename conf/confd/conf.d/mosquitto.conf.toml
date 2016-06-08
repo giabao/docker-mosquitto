@@ -1,5 +1,4 @@
 [template]
-prefix = "/self/service/metadata"
 src="mosquitto.conf.tmpl"
 dest="/etc/mosquitto/mosquitto.conf"
 keys = [

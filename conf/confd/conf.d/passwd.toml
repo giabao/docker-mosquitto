@@ -1,5 +1,6 @@
 [template]
-prefix = "/self/service/metadata/mosquitto"
 src="passwd.tmpl"
 dest="/etc/mosquitto/passwd"
-keys = ["/users"]
+keys = [
+  "/mosquitto/users",
+]

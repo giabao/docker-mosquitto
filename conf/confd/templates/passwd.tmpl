@@ -1,2 +1,2 @@
-{{if exists "/users/0/username"}}{{range ls "/users"}}{{getv (printf "/users/%s/username" .)}}:{{getv (printf "/users/%s/password" .)}}
+{{if exists "/mosquitto/users/0/username"}}{{range ls "/mosquitto/users"}}{{getv (printf "/mosquitto/users/%s/username" .)}}:{{getv (printf "/mosquitto/users/%s/password" .)}}
 {{end}}{{end}}

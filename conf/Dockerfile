@@ -8,4 +8,4 @@ ADD ./confd /etc/confd
 VOLUME /etc/mosquitto
 
 ENTRYPOINT ["/confd"]
-CMD ["-backend=rancher", "--prefix=/2015-12-19", "-node", "rancher-metadata.rancher.internal"]
+CMD ["-backend=rancher", "--prefix=/2015-12-19/self/service/metadata", "-node", "rancher-metadata.rancher.internal"]
