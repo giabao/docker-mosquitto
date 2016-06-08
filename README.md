@@ -5,7 +5,7 @@ based on alpine:3.4, intend for using in rancher.
 
 #### build local
 ```
-git clone ???
+git clone https://github.com/giabao/docker-mosquitto.git
 cd docker-mosquitto
 docker build --rm -t mosquitto-conf:1.4.8 conf/
 docker build --rm -t mosquitto:1.4.8-alpine mosquitto/
