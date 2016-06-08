@@ -1,0 +1,2 @@
+{{if exists "/users/0/username"}}{{range ls "/users"}}{{getv (printf "/users/%s/username" .)}}:{{getv (printf "/users/%s/password" .)}}
+{{end}}{{end}}

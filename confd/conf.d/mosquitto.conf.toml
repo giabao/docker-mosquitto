@@ -1,0 +1,10 @@
+[template]
+prefix = "/self/service/metadata"
+src="mosquitto.conf.tmpl"
+dest="/etc/mosquitto/mosquitto.conf"
+keys = [
+  "/mosquitto/conf",
+  "/mosquitto/users"
+]
+
+reload_cmd = "kill -s SIGHUP $(cat /var/run/mosquitto.pid)"

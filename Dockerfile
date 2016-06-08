@@ -1,15 +1,14 @@
-FROM debian:jessie
+FROM alpine:3.4
 
-RUN echo deb http://repo.mosquitto.org/debian jessie main > /etc/apt/sources.list.d/mosquitto-jessie.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 30993623 && \
-    apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y mosquitto && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /var/cache/* && \
-    adduser --system --disabled-password --disabled-login mosquitto
+RUN apk add --no-cache mosquitto
+
+ADD https://github.com/giabao/confd/releases/download/v0.12.0-alpha3.1/confd-0.12.0-alpha3.1-alpine-amd64 /bin/confd
+ADD ./confd /etc/confd
+ADD ./entrypoint.sh /entrypoint.sh
+RUN chmod a+x /entrypoint.sh /bin/confd && \
+  chown -R mosquitto: /etc/mosquitto
 
 USER mosquitto
-
 EXPOSE 1883
 
-CMD ["mosquitto"]
+CMD ["/entrypoint.sh", "-backend=rancher --prefix=/2015-12-19"]

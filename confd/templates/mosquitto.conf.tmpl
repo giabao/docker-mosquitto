@@ -1,0 +1,13 @@
+user mosquitto
+pid_file /var/run/mosquitto.pid
+log_dest stdout
+max_inflight_messages {{getv "/mosquitto/conf/max_inflight_messages" "20"}}
+message_size_limit {{getv "/mosquitto/conf/message_size_limit" "0"}}
+{{if exists "/mosquitto/conf/persistent_client_expiration"}}
+persistent_client_expiration {{getv "/mosquitto/conf/persistent_client_expiration"}}
+{{end}}
+allow_duplicate_messages {{getv "/mosquitto/conf/allow_duplicate_messages" "true"}}
+allow_anonymous {{getv "/mosquitto/conf/allow_anonymous" "true"}}
+{{if exists "/mosquitto/users/0/username"}}
+password_file /etc/mosquitto/passwd
+{{end}}
