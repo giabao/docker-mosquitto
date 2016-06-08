@@ -1,6 +1,7 @@
 FROM alpine:3.4
 
-RUN apk add --no-cache mosquitto
+RUN apk add --no-cache mosquitto && \
+  rm -Rf /etc/mosquitto/
 
 ADD ./entrypoint.sh /entrypoint.sh
 
