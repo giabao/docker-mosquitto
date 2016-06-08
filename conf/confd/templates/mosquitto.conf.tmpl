@@ -1,9 +1,22 @@
+retry_interval {{getv "/mosquitto/conf/retry/interval" "20"}}
+sys_interval {{getv "/mosquitto/conf/sys/interval" "10"}}
+store_clean_interval {{getv "/mosquitto/conf/store/clean/interval" "10"}}
 max_inflight_messages {{getv "/mosquitto/conf/max/inflight/messages" "20"}}
+max_queued_messages {{getv "/mosquitto/conf/max/queued/messages" "100"}}
+queue_qos0_messages {{getv "/mosquitto/conf/queue/qos0/messages" "false"}}
 message_size_limit {{getv "/mosquitto/conf/message/size/limit" "0"}}
+allow_zero_length_clientid {{getv "/mosquitto/conf/allow/zero/length/clientid" "true"}}
+{{if exists "/mosquitto/conf/auto/id/prefix"}}
+auto_id_prefix
+{{end}}
 {{if exists "/mosquitto/conf/persistent/client/expiration"}}
 persistent_client_expiration {{getv "/mosquitto/conf/persistent/client/expiration"}}
 {{end}}
 allow_duplicate_messages {{getv "/mosquitto/conf/allow/duplicate/messages" "true"}}
+upgrade_outgoing_qos {{getv "/mosquitto/conf/upgrade/outgoing/qos" "false"}}
+max_connections {{getv "/mosquitto/conf/max/connections" "-1"}}
+connection_messages {{getv "/mosquitto/conf/connection/messages" "true"}}
+log_timestamp {{getv "/mosquitto/conf/log/timestamp" "true"}}
 allow_anonymous {{getv "/mosquitto/conf/allow/anonymous" "true"}}
 {{if exists "/mosquitto/users/0/username"}}
 password_file /etc/mosquitto/passwd
